@@ -31,17 +31,20 @@
 
             if ($pagina == 'inicio') {
                 echo '
-                <div class="card presentation">
-                    <img src="https://proyectos.utp.ac.pa/recursos/img/logo_utp.png" alt="Logo UTP" class="utp-logo">
-                    <h1>Universidad Tecnológica de Panamá</h1>
-                    <h3>Facultad de Ingeniería de Sistemas Computacionales</h3>
-                    <hr>
-                    <p><strong>Estudiante:</strong> Jonathan Gonzalez</p>
-                    <p><strong>Asignatura:</strong> Desarrollo de Software VII</p>
-                    <p><strong>Proyecto:</strong> Estructuras de Control en PHP</p>
-                </div>';
+                <header class="hero-section">
+   <div class="content">
+      <img src="https://fisc.utp.ac.pa/sites/fisc.utp.ac.pa/files/documentos/2020/imagen/logo_en_contactenos.png" alt="Logo UTP" class="logo">
+      //  <h1>Universidad Tecnológica de Panamá</h1>
+      <h3>Facultad de Ingeniería en Sistemas Computacionales</h3>
+      <h4>Lic. Desarrollo y Gestión de Software</h4>
+      <h4>Desarrollo de Software VII</h4>
+      <hr>
+      <p><strong>Estudiante:</strong> Jonathan Gonzalez, Andrade Victor, Chirú Kelvin, Magallón Amilcar</p>
+      <p>Vergara Massiel, Barrios Dangelo, Morales Josue, Vallarino Jean</p>
+      </div>
+</header>';
             } 
-            
+            //PROBLEMA 1 ###################################################################################
             elseif ($pagina == 'p1') {
                 echo '
                 <div class="card">
@@ -66,7 +69,8 @@
                 echo '</div>';
             } 
 
-            elseif ($pagina == 'p10') { //Problema 10
+            //PROBLEMA 10 ########################################################################################
+            elseif ($pagina == 'p10') { 
                    echo '
                     <div class="card">
                     <h2>Problema 10: TABLA DEL 1 AL 50 [MULTIPLOS DE 2, 3 Y 5] </h2>
@@ -100,9 +104,118 @@
 
 
 
+            //Problema 2 ####################################################################################
+            elseif ($pagina == 'p2') {
+                echo '<div class="card">
+                <h2>Matriz con resultados en diagonal</h2>
+                <p>Este código muestra la suma de los números en diagonal, promedio y porcentaje que se ven dentro de la matriz</p>
+
+                <table class="mi-tabla">
+  <tr>
+    <td>10</td>
+    <td>20</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>12</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>18</td>
+    <td>19</td>
+  </tr>
+</table>
+
+                <form method="POST" class="form-style">
+                        <button type="submit" name="calc_p2">Ejecutar Prueba</button>
+                    </form>';
+if (isset($_POST['calc_p2'])) {
+                    $numeros = array (
+      array(10, 20, 30),
+      array(15, 12, 14),
+      array(17, 18, 19)
+    );
+
+    $suma_diagonal = 0;
+    $suma_total = 0;
+
+    echo "<h3>Valores sumados (diagonal):</h3>";
+    echo "<ul>";
+
+    for ($row = 0; $row < 3; $row++) {
+        for ($col = 0; $col < 3; $col++) {
             
-            else {
-                echo '<div class="card"><h2>Sección en Construcción</h2><p>Contenido para el Problema 2 aquí.</p></div>';
+            $valor = $numeros[$row][$col];
+            $suma_total += $valor; 
+
+            if ($row == $col) {
+                echo "<li><b>$valor</b></li>"; 
+                $suma_diagonal += $valor;
+            }
+        }
+    }
+    echo "</ul>";
+
+    // CL
+    $promedio = $suma_diagonal / 3;
+    $porcentaje = ($suma_diagonal / $suma_total) * 100;
+
+    echo "<p>Suma de la diagonal: <b>$suma_diagonal</b></p>";
+    echo "<p>Suma total de la matriz: <b>$suma_total</b></p>";
+    echo "<p>Promedio de la diagonal: <b>" . round($promedio, 2) . "</b></p>";
+    echo "<p>Porcentaje respecto al total: <b>" . round($porcentaje, 2) . "%</b></p>";
+
+    // Preparar la tabla de prueba de escritorio
+    echo "<p><h2>Esta es la prueba de escritorio</h2></p>";
+    echo "<table>";
+    echo "<thead>
+            <tr>
+                <th>Iteración</th>
+                <th>Fila</th>
+                <th>Columna</th>
+                <th>Valor</th>
+                <th>Suma Total Acum.</th>
+                <th>¿Es Diagonal?</th>
+                <th>Suma Diag. Acum.</th>
+            </tr>
+          </thead>";
+    echo "<tbody>";
+
+    $iteracion = 1;
+    $suma_total1 = 0;
+    $suma_diagonal1 = 0;
+
+    for ($row = 0; $row < 3; $row++) {
+        for ($col = 0; $col < 3; $col++) {
+            
+            $valor = $numeros[$row][$col];
+            $suma_total1 += $valor; 
+            $es_diagonal = ($row == $col);
+            
+            if ($es_diagonal) {
+                $suma_diagonal1 += $valor;
+            }
+
+            // Fila de la tabla para cada iteración
+            $clase_diagonal = $es_diagonal ? "diagonal-row" : "";
+            echo "<tr class='$clase_diagonal'>";
+            echo "<td>$iteracion</td>";
+            echo "<td>[$row]</td>";
+            echo "<td>[$col]</td>";
+            echo "<td>$valor</td>";
+            echo "<td>$suma_total1</td>";
+            echo "<td>" . ($es_diagonal ? "SÍ" : "NO") . "</td>";
+            echo "<td>$suma_diagonal1</td>";
+            echo "</tr>";
+            
+            $iteracion++;
+        }
+    }
+    echo "</tbody></table>";
+                echo '</div>';
+            }
             }
             ?>
         </main>

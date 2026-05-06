@@ -142,3 +142,144 @@ body {
 #list_multiplo {
     list-style-type:square;
 }
+
+.hero-section {
+    position: relative;
+    height: 100vh; /* Ocupa toda la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    /* Fondo con overlay oscuro para que el texto resalte */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://utp.ac.pa/sites/default/files/fachada1_0.jpg') no-repeat center center/cover;
+    padding: 20px;
+}
+
+.hero-section .content {
+    max-width: 800px;
+    z-index: 1;
+}
+
+.hero-section .logo {
+    width: 120px; /* Tamaño más controlado */
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-section h3 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #ffd700; /* Un toque dorado para resaltar (opcional) */
+}
+
+.hero-section h4 {
+    font-weight: 400;
+    margin: 5px 0;
+    opacity: 0.9;
+}
+
+.hero-section hr {
+    width: 60px;
+    border: 2px solid #ffd700;
+    margin: 20px auto;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+    font-weight: 300;
+}
+
+
+.logo {
+    width: 150px; /* Ajusta el tamaño de tu logo pequeño */
+    margin-bottom: 20px;
+}
+
+.mi-tabla {
+    border-collapse: collapse; /* Une los bordes en una sola línea */
+    margin: 20px auto;        /* Centra la tabla */
+    font-family: Arial, sans-serif;
+}
+
+.mi-tabla td {
+    border: 2px solid #333;   /* Color y grosor del borde */
+    padding: 20px;            /* Espacio interno de cada celda */
+    text-align: center;       /* Centra el número */
+    width: 50px;              /* Hace las celdas simétricas */
+    height: 50px;
+    font-weight: bold;
+}
+
+/* Estilo general para la tabla de prueba de escritorio */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+/* Encabezado elegante */
+table thead th {
+    background-color: #4a69bd;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 15px;
+    text-align: center;
+    border: none;
+}
+
+/* Celdas del cuerpo */
+table tbody td {
+    padding: 12px 15px;
+    text-align: center;
+    color: #444;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+}
+
+/* Efecto hover para facilitar el seguimiento visual */
+table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Resaltado específico para la fila de la DIAGONAL */
+.diagonal-row {
+    background-color: #d1e7dd !important; /* Un verde suave para éxito */
+    color: #0f5132;
+    transition: transform 0.2s ease;
+}
+
+.diagonal-row td {
+    font-weight: bold;
+    border-bottom: 1px solid #badbcc;
+}
+
+/* Estilo para el último borde inferior */
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badge decorativo para el "SÍ" en la columna diagonal */
+table td:nth-child(6) {
+    font-weight: bold;
+}
