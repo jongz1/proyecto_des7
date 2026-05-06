@@ -102,8 +102,114 @@
             } //resultado
         }
 
+            //Problema 3 ####################################################################################
 
+<div class="contenedor">
+    <h2>Tabla del 1 al 50</h2>
+    <p><strong>Múltiplos de 2, 3 y 5</strong></p>
 
+    <div class="resultado">
+        <?php
+        $numero = 8;
+
+        for ($i = 1; $i <= 50; $i++)
+        {
+            $L = $numero * $i;
+
+            if ($L % 2 == 0)
+            {
+                if ($L % 3 == 0)
+                {
+                    if ($L % 5 == 0)
+                    {
+                        echo "$numero x $i = $L <br>";
+                    }
+                }
+            }
+        }
+        ?>
+    </div>
+</div>
+
+            //Problema 4 ####################################################################################
+
+            <div class="box">
+    <h3 class="titulo">Detalle de Nómina</h3>
+
+    <?php
+    $tarifa = 7.25;
+    $horas = 85;
+
+    $tasa_css = 0.0975;
+    $tasa_seguro = 0.0125;
+
+    $limite = 80;
+    $extra_horas = 0;
+    $monto_extra = 0;
+
+    if ($horas > $limite) {
+        $extra_horas = $horas - $limite;
+        $base_pago = $limite * $tarifa;
+
+        $valor_extra = $tarifa * 1.5;
+        $monto_extra = $extra_horas * $valor_extra;
+
+        $total_bruto = $base_pago + $monto_extra;
+    } else {
+        $base_pago = $horas * $tarifa;
+        $total_bruto = $base_pago;
+    }
+
+    $css_desc = $total_bruto * $tasa_css;
+    $seguro_desc = $total_bruto * $tasa_seguro;
+
+    $subtotal = $total_bruto - ($css_desc + $seguro_desc);
+
+    $tiene_pension = true;
+    $cant_hijos = 3;
+    $incentivo = 0;
+
+    if ($cant_hijos == 1) {
+        $incentivo = $total_bruto * 0.20;
+    } elseif ($cant_hijos == 2) {
+        $incentivo = $total_bruto * 0.30;
+    } else {
+        $incentivo = $total_bruto * 0.40;
+    }
+
+    $pago_final = $subtotal + $incentivo;
+    ?>
+
+    <div class="bloque">
+        <div class="fila"><span>Tarifa por hora:</span><span>$<?= number_format($tarifa,2) ?></span></div>
+        <div class="fila"><span>Pago base:</span><span>$<?= number_format($base_pago,2) ?></span></div>
+
+        <?php if ($extra_horas > 0): ?>
+        <div class="fila"><span>Extras (<?= $extra_horas ?>h):</span><span>$<?= number_format($monto_extra,2) ?></span></div>
+        <?php endif; ?>
+
+        <div class="fila destacado"><span>Total bruto:</span><span>$<?= number_format($total_bruto,2) ?></span></div>
+    </div>
+
+    <div class="bloque">
+        <div class="fila"><span>CSS:</span><span>$<?= number_format($css_desc,2) ?></span></div>
+        <div class="fila"><span>Seguro educativo:</span><span>$<?= number_format($seguro_desc,2) ?></span></div>
+    </div>
+
+    <div class="bloque">
+        <div class="fila"><span>Pensión:</span><span><?= $tiene_pension ? "Sí" : "No" ?></span></div>
+        <div class="fila"><span>Hijos (<?= $cant_hijos ?>):</span><span>$<?= number_format($incentivo,2) ?></span></div>
+    </div>
+
+    <div class="bloque">
+        <div class="fila destacado neto">
+            <span>Total a recibir:</span>
+            <span>$<?= number_format($pago_final,2) ?></span>
+        </div>
+    </div>
+
+</div>
+            
             //Problema 2 ####################################################################################
             elseif ($pagina == 'p2') {
                 echo '<div class="card">
