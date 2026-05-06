@@ -120,7 +120,7 @@ body {
     color: var(--success-color);
 }
 
-#box_multiplo {
+#box_multiplo, .box_general {
     margin-top: 20px;
     padding-left: 10px;
     border: 2px solid #EBF0E9;
@@ -141,6 +141,11 @@ body {
 
 #list_multiplo {
     list-style-type:square;
+}
+
+.inputB_G {
+    display: block;
+    margin: 15px
 }
 
 .hero-section {

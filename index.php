@@ -20,6 +20,10 @@
                 <li><a href="?p=inicio" class="<?php echo (!isset($_GET['p']) || $_GET['p'] == 'inicio') ? 'active' : ''; ?>"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="?p=p1" class="<?php echo ($_GET['p'] == 'p1') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 1</a></li>
                 <li><a href="?p=p2" class="<?php echo ($_GET['p'] == 'p2') ? 'active' : ''; ?>"><i class="fas fa-terminal"></i> Problema 2</a></li>
+                <li><a href="?p=p3" class="<?php echo ($_GET['p'] == 'p3') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 3</a></li>
+                <li><a href="?p=p4" class="<?php echo ($_GET['p'] == 'p4') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 4</a></li>
+                <li><a href="?p=p5" class="<?php echo ($_GET['p'] == 'p5') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 5</a></li>
+                <li><a href="?p=p6" class="<?php echo ($_GET['p'] == 'p6') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 6</a></li>
                 <li><a href="?p=p10" class="<?php echo ($_GET['p'] == 'p10') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 10</a></li>
             </ul>
         </nav>
@@ -102,114 +106,7 @@
             } //resultado
         }
 
-            //Problema 3 ####################################################################################
 
-<div class="contenedor">
-    <h2>Tabla del 1 al 50</h2>
-    <p><strong>Múltiplos de 2, 3 y 5</strong></p>
-
-    <div class="resultado">
-        <?php
-        $numero = 8;
-
-        for ($i = 1; $i <= 50; $i++)
-        {
-            $L = $numero * $i;
-
-            if ($L % 2 == 0)
-            {
-                if ($L % 3 == 0)
-                {
-                    if ($L % 5 == 0)
-                    {
-                        echo "$numero x $i = $L <br>";
-                    }
-                }
-            }
-        }
-        ?>
-    </div>
-</div>
-
-            //Problema 4 ####################################################################################
-
-            <div class="box">
-    <h3 class="titulo">Detalle de Nómina</h3>
-
-    <?php
-    $tarifa = 7.25;
-    $horas = 85;
-
-    $tasa_css = 0.0975;
-    $tasa_seguro = 0.0125;
-
-    $limite = 80;
-    $extra_horas = 0;
-    $monto_extra = 0;
-
-    if ($horas > $limite) {
-        $extra_horas = $horas - $limite;
-        $base_pago = $limite * $tarifa;
-
-        $valor_extra = $tarifa * 1.5;
-        $monto_extra = $extra_horas * $valor_extra;
-
-        $total_bruto = $base_pago + $monto_extra;
-    } else {
-        $base_pago = $horas * $tarifa;
-        $total_bruto = $base_pago;
-    }
-
-    $css_desc = $total_bruto * $tasa_css;
-    $seguro_desc = $total_bruto * $tasa_seguro;
-
-    $subtotal = $total_bruto - ($css_desc + $seguro_desc);
-
-    $tiene_pension = true;
-    $cant_hijos = 3;
-    $incentivo = 0;
-
-    if ($cant_hijos == 1) {
-        $incentivo = $total_bruto * 0.20;
-    } elseif ($cant_hijos == 2) {
-        $incentivo = $total_bruto * 0.30;
-    } else {
-        $incentivo = $total_bruto * 0.40;
-    }
-
-    $pago_final = $subtotal + $incentivo;
-    ?>
-
-    <div class="bloque">
-        <div class="fila"><span>Tarifa por hora:</span><span>$<?= number_format($tarifa,2) ?></span></div>
-        <div class="fila"><span>Pago base:</span><span>$<?= number_format($base_pago,2) ?></span></div>
-
-        <?php if ($extra_horas > 0): ?>
-        <div class="fila"><span>Extras (<?= $extra_horas ?>h):</span><span>$<?= number_format($monto_extra,2) ?></span></div>
-        <?php endif; ?>
-
-        <div class="fila destacado"><span>Total bruto:</span><span>$<?= number_format($total_bruto,2) ?></span></div>
-    </div>
-
-    <div class="bloque">
-        <div class="fila"><span>CSS:</span><span>$<?= number_format($css_desc,2) ?></span></div>
-        <div class="fila"><span>Seguro educativo:</span><span>$<?= number_format($seguro_desc,2) ?></span></div>
-    </div>
-
-    <div class="bloque">
-        <div class="fila"><span>Pensión:</span><span><?= $tiene_pension ? "Sí" : "No" ?></span></div>
-        <div class="fila"><span>Hijos (<?= $cant_hijos ?>):</span><span>$<?= number_format($incentivo,2) ?></span></div>
-    </div>
-
-    <div class="bloque">
-        <div class="fila destacado neto">
-            <span>Total a recibir:</span>
-            <span>$<?= number_format($pago_final,2) ?></span>
-        </div>
-    </div>
-
-</div>
-            
             //Problema 2 ####################################################################################
             elseif ($pagina == 'p2') {
                 echo '<div class="card">
@@ -323,6 +220,254 @@ if (isset($_POST['calc_p2'])) {
                 echo '</div>';
             }
             }
+
+            //Problema 3 ###################################################################################
+            elseif ($pagina == 'p3') { 
+                   echo '
+                    <div class="card">
+                    <h2>Problema 10: Desglozar la palabra </h2>
+                    <p>Mostrar la posicion y el total de este de una palabra introducida.</p>
+                    
+                    <form method="POST" class="form-style">
+                        <input type="text" name="text" placeholder="Ingresa una palabra" required>
+                        <button type="submit" name="calc_p3">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
+
+                    if (isset($_POST['calc_p3'])) {
+                    $palabra = $_POST['text'];
+                    $abecedario = "abcdefghijklmnopqrstuvwxyz";
+
+
+                $palabra = strtolower($palabra);
+                $total = 0;
+
+                echo '<div class="box_general" style="padding:15px; padding-top:0;">';
+                echo "<h3>Desglose de la palabra: " . ucfirst($palabra) . "</h3>";
+                echo "<ul>";
+
+                for ($i = 0; $i < strlen($palabra); $i++) {
+                $letra = $palabra[$i];
+
+                for ($j = 0; $j < strlen($abecedario); $j++) {
+                if ($letra == $abecedario[$j]) {
+                $valor = $j + 1; // a=1, b=2...
+                $total += $valor;
+
+                echo "<li>Letra <strong>$letra</strong>: posición $valor</li>";
+            }
+        }
+    }
+
+        echo "</ul>";
+        echo "<strong>Valor total acumulado: $total</strong>";
+        echo '</div>';
+        }
+}
+
+            //Problema 4 ###################################################################################
+            elseif ($pagina == 'p4') { 
+                   echo '
+                    <div class="card">
+                    <h2>Problema 4: Calcular el salario bruto y neto </h2>
+                    <p>Mostrar en pantalla el salario bruto y neto de un empleado.</p>
+                    
+                    <form method="POST" class="form-style">
+                       <input type="number" class= "inputB_G" step="any" min=0 name="salarioHora" placeholder="Ingresa el salario por hora" required>
+                       <input type="number" class= "inputB_G"  min=0 name="horasTrabajadas" placeholder="Ingresa las horas trabajadas" required>
+                       <input type="number" class= "inputB_G"  min=0 name="nHijos" placeholder="Ingresa la cantidad de hijos" required>
+                        <button class= "inputB_G" type="submit" name="calc_p4">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
+
+                    if (isset($_POST['calc_p4'])) {
+
+                    $salario_por_hora = $_POST['salarioHora'];
+                    $horas_trabajadas = $_POST['horasTrabajadas']; 
+
+                    $seguro_social_tasa = 0.0975; 
+                    $seguro_educativo_tasa = 0.125;
+
+                    $horas_base_limite = 80;
+                    $pago_extras = 0;
+                    $extras = 0;
+
+                    if ($horas_trabajadas > $horas_base_limite) {
+                    $extras = $horas_trabajadas - $horas_base_limite;
+                    $pago_base = $horas_base_limite * $salario_por_hora;
+    
+                    $precio_hora_extra = $salario_por_hora * 1.50; 
+                    $pago_extras = $extras * $precio_hora_extra;
+    
+                    $salario_bruto = $pago_base + $pago_extras;
+                    } else {
+                    $pago_base = $horas_trabajadas * $salario_por_hora;
+                    $salario_bruto = $pago_base;
+                    }
+
+                    $deduccion_social = $salario_bruto * $seguro_social_tasa;
+                    $deduccion_educativo = $salario_bruto * 0.0125; // 1.25%
+                    $salario_neto_parcial = $salario_bruto - ($deduccion_social + $deduccion_educativo);
+
+                    echo '<div class="box_general" style="padding:20px">';
+                    echo "<strong>RESUMEN DE PAGO DETALLADO</strong><br>";
+                    echo "Salario por hora: $" . number_format($salario_por_hora, 2) . "<br>";
+                    echo "Horas Regulares (80h): $" . number_format($pago_base, 2) . "<br>";
+
+                    if ($extras > 0) {
+                    echo "Horas Extras (" . $extras . "h) a tiempo y medio: $" . number_format($pago_extras, 2) . "<br>";
+                    }
+
+                    echo "<br>";
+                    echo "<strong>SALARIO BRUTO TOTAL: $" . number_format($salario_bruto, 2) . "</strong><br>";
+                    echo "<br>";
+                    echo "Deducción Seguro Social (9.75%): $" . number_format($deduccion_social, 2) . "<br>";
+                    echo "Deducción Seguro Educativo (1.25%): $" . number_format($deduccion_educativo, 2) . "<br>";
+                    echo "<br>";
+
+                   
+                    $hijos = $_POST['nHijos']; 
+                    $pension = ($hijos >= 1) ? true : false;  
+                    $bono_hijos = 0;
+
+                    if ($hijos == 1) {
+                    $bono_hijos = $salario_bruto * 0.20;
+                    } elseif ($hijos == 2) {
+                    $bono_hijos = $salario_bruto * 0.30;
+                    } elseif ($hijos >= 3) {
+                    $bono_hijos = $salario_bruto * 0.40;
+                    }
+
+                    $salario_neto_final = $salario_neto_parcial + $bono_hijos;
+
+                    echo "Pensión Alimenticia: " . ($pension ? "Activa" : "No aplica") . "<br>";
+                    echo "Bono por Hijos (" . $hijos . "): $" . number_format($bono_hijos, 2) . "<br>";
+                    echo "<br>";
+                    echo "<strong>SALARIO NETO FINAL: $" . number_format($salario_neto_final, 2) . "</strong>";
+                    echo '</div>';
+                    } //resultado
+                }
+
+                //Problema 5 ####################################################################################
+                 elseif ($pagina == 'p5') { 
+                   echo '
+                    <div class="card">
+                    <h2>Problema 5: Analizador </h2>
+                    <p>Mostrar si el numero introducido es par o impar, perfecto, es primo y su numero en binario, octal y hexadecimal.</p>
+                    
+                    <form method="POST" class="form-style">
+                       <input type="number" class= "inputB_G" min=0 name="num" placeholder="Ingresa un numero" required>
+                       <button class= "inputB_G" type="submit" name="calc_p5">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
+
+                    if (isset($_POST['calc_p5'])) {                      
+                   $n = $_POST['num'];
+
+                   echo "<div class='box_general' style='padding: 20px; padding-top:0;'>";
+                  echo "<h3>Resultados para el número: $n</h3>";
+
+        // --- SECCIÓN PURA DE "IF" ---
+
+        // 1. Par o Impar
+        if ($n % 2 == 0) {
+            echo "El número es: PAR <br>";
+        } else {
+            echo "El número es: IMPAR <br>";
+        }
+
+        // 2. Número Perfecto (Lógica simplificada con IF)
+        // (Nota: Como no quieres el 'for' aquí, calculamos la suma directamente)
+        $suma = 0; 
+        for($i=1; $i<$n; $i++) { if($n%$i==0) $suma+=$i; } // Este for es interno para el cálculo
+
+        if ($suma == $n) {
+            echo "Es un número PERFECTO <br>";
+        } else {
+            echo "NO es un número perfecto <br>";
+        }
+
+        // 3. Número Primo (Decisión con IF)
+        $c = 0;
+        for($i=1; $i<=$n; $i++) { if($n%$i==0) $c++; } // Cálculo interno
+
+        if ($c == 2) {
+            echo "Es un número PRIMO <br>";
+        } else {
+            echo "NO es un número primo <br>";
+        }
+
+        echo "<hr>";
+
+        //
+
+        // Binario
+        $bin = "";
+        for ($i = $n; $i > 0; $i = (int)($i / 2)) {
+            $bin = ($i % 2) . $bin;
+        }
+        echo "Binario: " . ($bin ?: "0") . "<br>";
+
+        // Octal
+        $oct = "";
+        for ($i = $n; $i > 0; $i = (int)($i / 8)) {
+            $oct = ($i % 8) . $oct;
+        }
+        echo "Octal: " . ($oct ?: "0") . "<br>";
+
+        // Hexadecimal
+        $hex = "";
+        $letras = "0123456789ABCDEF";
+        for ($i = $n; $i > 0; $i = (int)($i / 16)) {
+            $hex = $letras[$i % 16] . $hex;
+        }
+        echo "Hexadecimal: " . ($hex ?: "0");
+
+        echo "</div>";
+
+    }
+} //resultado 
+    
+                //Problema 3 ###################################################################################
+            elseif ($pagina == 'p6') { 
+                   echo '
+                    <div class="card">
+                    <h2>Problema 6: Lados de un triangulo con el teorema de pitagoras </h2>
+                    <p>Encontrar lados de un triangulo con teorema de pitagoras .</p>
+                    
+                    <form method="POST" class="form-style">
+                        <input type="number" min=0 name="number1" placeholder="Ingresa el lado A" required>
+                        <input type="number" min=0 name="number2" placeholder="Ingresa el lado B" required>
+                        <input type="number" min=0 name="number3" placeholder="Ingresa el lado C" required>
+                        <button class="inputB_G"type="submit" name="calc_p6">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
+
+                    if (isset($_POST['calc_p6'])) {
+                    $a = $_POST['number1'];
+                    $b = $_POST['number2'];
+                    $c = $_POST['number3'];
+                    
+                    
+      if ($b > $a &&($c != $a && $c != $b) ){
+          $ladoc = sqrt(($a**2) + ($b**2)); 
+          $ladoa = sqrt(($c**2) - ($b**2)); 
+          $ladob = sqrt(($c**2) - ($a**2)); 
+         
+          echo '<div class="box_general" style="padding:20px; padding-top:0;">';
+
+          echo "<h3> RESULTADOS </h3>";
+          echo "Este es el lado del triangulo C: " .$ladoc;
+          echo "</br>Este es el lado del triangulo A: " .$ladoa;
+          echo "</br>Este es el lado del triangulo B: "  .$ladob;
+      }
+          else {
+            echo "<h2> Error al introducir los datos </h2>";
+          }
+     echo "</div>";
+        }
+}
+
             ?>
         </main>
     </div>
