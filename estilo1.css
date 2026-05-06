@@ -119,3 +119,26 @@ body {
     font-size: 1.2rem;
     color: var(--success-color);
 }
+
+#box_multiplo {
+    margin-top: 20px;
+    padding-left: 10px;
+    border: 2px solid #EBF0E9;
+    border-radius: 20px;
+    background-color: #0f172a;
+}
+
+
+.p_multiplo {
+    margin: 15px;
+    margin-top: 0;
+    margin-top: 5;
+    padding: 10px;
+    border: 2px solid cyan;
+    border-radius: 10%;
+    display: inline-block;
+}
+
+#list_multiplo {
+    list-style-type:square;
+}

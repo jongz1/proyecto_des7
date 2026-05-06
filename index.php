@@ -20,6 +20,7 @@
                 <li><a href="?p=inicio" class="<?php echo (!isset($_GET['p']) || $_GET['p'] == 'inicio') ? 'active' : ''; ?>"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="?p=p1" class="<?php echo ($_GET['p'] == 'p1') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 1</a></li>
                 <li><a href="?p=p2" class="<?php echo ($_GET['p'] == 'p2') ? 'active' : ''; ?>"><i class="fas fa-terminal"></i> Problema 2</a></li>
+                <li><a href="?p=p10" class="<?php echo ($_GET['p'] == 'p10') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 10</a></li>
             </ul>
         </nav>
 
@@ -64,6 +65,41 @@
                 }
                 echo '</div>';
             } 
+
+            elseif ($pagina == 'p10') { //Problema 10
+                   echo '
+                    <div class="card">
+                    <h2>Problema 10: TABLA DEL 1 AL 50 [MULTIPLOS DE 2, 3 Y 5] </h2>
+                    <p>Mostrar la tabla de multiplicar de un numero y que sean multiplos de 2, 3 y 5.</p>
+                    
+                    <form method="POST" class="form-style">
+                        <input type="number" name="num" placeholder="Ingresa un número" required>
+                        <button type="submit" name="calc_multiplo">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
+
+                    if (isset($_POST['calc_multiplo'])) {
+                    $numero = $_POST['num'];
+
+                    echo '<div id="box_multiplo">';
+                    echo "<h3 style='text-align:center; text-decoration:underline #ACFF54;'> Tabla de multiplicar de $numero (Multiplo 2, 3 y 5): </h3>";
+                    echo '<ul id="list_multiplo">';
+
+                for ($i = 1; $i <= 50; $i++){
+                    $L = $numero * $i;
+                     if ($L % 2 == 0){
+                     if ($L % 3 == 0){
+                     if ($L % 5 == 0){
+                     echo "<li> <div> <p class = 'p_multiplo'> $numero x $i = $L <br> </p> </div> </li>";
+                    }}}
+                }
+                echo '</ul>';
+                echo '</div>';
+            } //resultado
+        }
+
+
+
             
             else {
                 echo '<div class="card"><h2>Sección en Construcción</h2><p>Contenido para el Problema 2 aquí.</p></div>';
