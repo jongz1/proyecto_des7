@@ -24,7 +24,8 @@
                 <li><a href="?p=p4" class="<?php echo ($_GET['p'] == 'p4') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 4</a></li>
                 <li><a href="?p=p5" class="<?php echo ($_GET['p'] == 'p5') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 5</a></li>
                 <li><a href="?p=p6" class="<?php echo ($_GET['p'] == 'p6') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 6</a></li>
-                <li><a href="?p=p10" class="<?php echo ($_GET['p'] == 'p10') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 10</a></li>
+                <li><a href="?p=p7" class="<?php echo ($_GET['p'] == 'p7') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 7</a></li>
+                <li><a href="?p=p8" class="<?php echo ($_GET['p'] == 'p8') ? 'active' : ''; ?>"><i class="fas fa-code"></i> Problema 8</a></li>
             </ul>
         </nav>
 
@@ -73,38 +74,8 @@
                 echo '</div>';
             } 
 
-            //PROBLEMA 10 ########################################################################################
-            elseif ($pagina == 'p10') { 
-                   echo '
-                    <div class="card">
-                    <h2>Problema 10: TABLA DEL 1 AL 50 [MULTIPLOS DE 2, 3 Y 5] </h2>
-                    <p>Mostrar la tabla de multiplicar de un numero y que sean multiplos de 2, 3 y 5.</p>
-                    
-                    <form method="POST" class="form-style">
-                        <input type="number" name="num" placeholder="Ingresa un número" required>
-                        <button type="submit" name="calc_multiplo">Ejecutar Prueba</button>
-                    </form>
-                    '; //encabezado
-
-                    if (isset($_POST['calc_multiplo'])) {
-                    $numero = $_POST['num'];
-
-                    echo '<div id="box_multiplo">';
-                    echo "<h3 style='text-align:center; text-decoration:underline #ACFF54;'> Tabla de multiplicar de $numero (Multiplo 2, 3 y 5): </h3>";
-                    echo '<ul id="list_multiplo">';
-
-                for ($i = 1; $i <= 50; $i++){
-                    $L = $numero * $i;
-                     if ($L % 2 == 0){
-                     if ($L % 3 == 0){
-                     if ($L % 5 == 0){
-                     echo "<li> <div> <p class = 'p_multiplo'> $numero x $i = $L <br> </p> </div> </li>";
-                    }}}
-                }
-                echo '</ul>';
-                echo '</div>';
-            } //resultado
-        }
+            //PROBLEMA 8 ########################################################################################
+            
 
 
             //Problema 2 ####################################################################################
@@ -428,7 +399,7 @@ if (isset($_POST['calc_p2'])) {
     }
 } //resultado 
     
-                //Problema 3 ###################################################################################
+                //Problema 6 ###################################################################################
             elseif ($pagina == 'p6') { 
                    echo '
                     <div class="card">
@@ -467,7 +438,85 @@ if (isset($_POST['calc_p2'])) {
      echo "</div>";
         }
 }
+                       elseif ($pagina == 'p7') { 
+                   echo '
+                    <div class="card">
+                    <h2>Problema 7: Encontrar los numeros no repetidos </h2>
+                    <p>dado 2 numeros positivos, encontrar los digitos del numero que no se repitan en ambos numeros .</p>
+                    
+                    <form method="POST" class="form-style">
+                        <input type="number" name="num1" placeholder="Ingresa un número" required>
+                        <input type="number" name="num2" placeholder="Ingresa un número" required>
+                        <button type="submit" name="calc_p7">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
 
+                    if (isset($_POST['calc_p7'])) {
+                    $numero1 = $_POST['num1'];
+                    $numero2 = $_POST['num2'];
+
+                    $numerosA = str_split($numero1);
+                    $numerosB = str_split($numero2);
+
+                    echo '<div class="box_general" style="border:none;">';
+                    echo 'Numeros repetidos: ';
+
+                    for($f=0; $f<count($numerosA); $f++){
+                        for($c=0; $c<count($numerosB); $c++){
+
+                            if($numerosA[$f] == $numerosB[$c]){break;}
+                            else if ($numerosA[$f] != $numerosB[$c] && $c == count($numerosB) - 1 ){
+                                echo $numerosA[$f];
+                            }
+                        }
+                    }
+
+
+                    for($c=0; $c<count($numerosB); $c++){
+                        for($f=0; $f<count($numerosA); $f++){
+
+                            if($numerosB[$c] == $numerosA[$f]){break;}
+                            else if ($numerosB[$c] != $numerosA[$f] && $f == count($numerosA) - 1 ){
+                                echo $numerosB[$c];
+                            }
+                        }
+                    }
+                    echo '</div>';           
+            } //resultado
+        }
+
+
+                elseif ($pagina == 'p8') { 
+                   echo '
+                    <div class="card">
+                    <h2>Problema 8: TABLA DEL 1 AL 50 [MULTIPLOS DE 2, 3 Y 5] </h2>
+                    <p>Mostrar la tabla de multiplicar de un numero y que sean multiplos de 2, 3 y 5.</p>
+                    
+                    <form method="POST" class="form-style">
+                        <input type="number" name="num" placeholder="Ingresa un número" required>
+                        <button type="submit" name="calc_multiplo">Ejecutar Prueba</button>
+                    </form>
+                    '; //encabezado
+
+                    if (isset($_POST['calc_multiplo'])) {
+                    $numero = $_POST['num'];
+
+                    echo '<div id="box_multiplo">';
+                    echo "<h3 style='text-align:center; text-decoration:underline #ACFF54;'> Tabla de multiplicar de $numero (Multiplo 2, 3 y 5): </h3>";
+                    echo '<ul id="list_multiplo">';
+
+                for ($i = 1; $i <= 50; $i++){
+                    $L = $numero * $i;
+                     if ($L % 2 == 0){
+                     if ($L % 3 == 0){
+                     if ($L % 5 == 0){
+                     echo "<li> <div> <p class = 'p_multiplo'> $numero x $i = $L <br> </p> </div> </li>";
+                    }}}
+                }
+                echo '</ul>';
+                echo '</div>';
+            } //resultado
+        }
             ?>
         </main>
     </div>
